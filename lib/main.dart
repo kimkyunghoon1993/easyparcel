@@ -244,82 +244,802 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Color(0xff12237e),
-        width: 600,
-        height: 200,
-        child: Container(
-          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-          child: Column(
-            children: [
-              Column(
+      body: Column(
+        children: [
+          Container(
+            color: Color(0xff12237e),
+            width: 600,
+            height: 150,
+            child: Container(
+              padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+              child: Column(
                 children: [
                   Column(
                     children: [
-                      Text(
-                        '물건 보낼 땐, 필드서비스!!',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      Column(
+                        children: [
+                          Text(
+                            '물건 보낼 땐, 필드서비스!!',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      )
                     ],
-                  )
+                  ),
+                  Container(
+                    width: 335,
+                    height: 50,
+                    color: Color.fromARGB(255, 32, 43, 55),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                textStyle: const TextStyle(fontSize: 20),
+                              ),
+                              onPressed: () {
+                                showModalBottomSheet<void>(
+                                  context: context,
+                                  isScrollControlled: true, // 모달의 기본 높이 제거
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                      height: 600,
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          children: <Widget>[
+                                            Container(
+                                                child: Column(
+                                              children: [
+                                                Container(
+                                                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                                                  alignment: Alignment.topRight,
+                                                  child: Column(
+                                                    children: [
+                                                      IconButton(
+                                                          icon: const Icon(Icons.close),
+                                                          onPressed: () {
+                                                            Navigator.of(context).pop();
+                                                          }
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Container(
+                                                  padding: EdgeInsets.fromLTRB(15, 8, 0, 10),
+                                                  alignment: Alignment.centerLeft,
+                                                  child: Text('출발지', style: TextStyle(color: Colors.black),
+                                                  ),
+                                                ),
+                                                Container(
+                                                    padding:
+                                                        EdgeInsets.fromLTRB(
+                                                            10, 0, 10, 0),
+                                                    child: Column(
+                                                      children: [
+                                                        Container(
+                                                          height: 30.0,
+                                                          child:  TextField(
+                                                            decoration: InputDecoration(
+                                                              isDense: true,
+                                                              contentPadding: EdgeInsets.all(10),
+                                                              border: OutlineInputBorder(),
+                                                              hintText: '주소 검색',
+                                                              hintStyle: TextStyle(),
+                                                              suffixIcon: IconButton(
+                                                                  icon: const Icon(Icons.search,),
+                                                                  onPressed: () {}
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    bottom:
+                                                                        8.0)),
+                                                        Container(
+                                                          height: 30.0,
+                                                          child:  TextField(
+                                                            decoration: InputDecoration(
+                                                              isDense: true,
+                                                              contentPadding: EdgeInsets.all(10),
+                                                              border: OutlineInputBorder(),
+                                                              hintText: '상세 주소',
+                                                              hintStyle: TextStyle(),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                                                        Container(
+                                                          height: 30.0,
+                                                          child:  TextField(
+                                                            decoration: InputDecoration(
+                                                              isDense: true,
+                                                              contentPadding: EdgeInsets.all(10),
+                                                              border: OutlineInputBorder(),
+                                                              hintText: '이름',
+                                                              hintStyle: TextStyle(),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                                                        Container(
+                                                          height: 30.0,
+                                                          child:  TextField(
+                                                            decoration: InputDecoration(
+                                                              isDense: true,
+                                                              contentPadding: EdgeInsets.all(10),
+                                                              border: OutlineInputBorder(),
+                                                              hintText: '전화 번호',
+                                                              hintStyle: TextStyle(),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                                                        Container(
+                                                          height: 30.0,
+                                                          child:  TextField(
+                                                            decoration: InputDecoration(
+                                                              isDense: true,
+                                                              contentPadding: EdgeInsets.all(10),
+                                                              border: OutlineInputBorder(),
+                                                              hintText: '픽업 기사님께 메시지 전달',
+                                                              hintStyle: TextStyle(),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            ElevatedButton(
+                                                                style:
+                                                                    ButtonStyle(
+                                                                  backgroundColor:
+                                                                      MaterialStateProperty.all(
+                                                                          Colors
+                                                                              .white30),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                                child: Text(
+                                                                  '주소록',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .black),
+                                                                )),
+                                                            Padding(
+                                                                padding: EdgeInsets
+                                                                    .only(
+                                                                        right:
+                                                                            8.0)),
+                                                            ElevatedButton(
+                                                                style:
+                                                                    ButtonStyle(
+                                                                  backgroundColor:
+                                                                      MaterialStateProperty.all(
+                                                                          Colors
+                                                                              .white30),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                                child: Text(
+                                                                  '집',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .black),
+                                                                )),
+                                                            Padding(
+                                                                padding: EdgeInsets
+                                                                    .only(
+                                                                    right:
+                                                                    8.0)),
+                                                            ElevatedButton(
+                                                                style:
+                                                                ButtonStyle(
+                                                                  backgroundColor:
+                                                                  MaterialStateProperty.all(
+                                                                      Colors
+                                                                          .white30),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                                child: Text(
+                                                                  '회사',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .black),
+                                                                )),
+                                                          ],
+                                                        ),
+                                                        Padding(padding: EdgeInsets.only(top: 70.0)),
+                                                        Row(
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                          children: [
+                                                            Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 8)),
+                                                            Text(
+                                                              '최근 배송에서 선택',
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black,letterSpacing: 2.0),
+                                                            ),
+                                                            Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 8)),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Text(
+                                                              '최근 배송 건이 없습니다.',
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .grey),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Padding(padding: EdgeInsets.only(bottom: 30.0)),
+                                                        Column(
+                                                          children: [
+                                                            ElevatedButton(
+                                                              child: Text('출발지 설정', style: TextStyle(color: Colors.white),),
+                                                              onPressed: () {},
+                                                              style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith((states) {
+                                                                  return states.contains(
+                                                                          MaterialState.pressed) ? Colors.green : Colors.grey;
+                                                                }
+                                                              ),
+                                                              fixedSize: MaterialStateProperty.resolveWith((states) {
+                                                                return states.contains(MaterialState.pressed) ? Size(300, 100) : Size(350, 50);
+                                                                }
+                                                              ),
+                                                                // Set elevation regardless of states
+                                                                elevation: MaterialStateProperty
+                                                                    .resolveWith(
+                                                                        (states) {
+                                                                  return 20.0;
+                                                                }),
+                                                              ),
+                                                            ),
+                                                            Padding(padding: EdgeInsets.only(bottom: 40.0)),
+                                                          ],
+                                                        )
+                                                      ],
+                                                    )),
+                                              ],
+
+                                            )),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: const Text(
+                                '출발',
+                                style: TextStyle(color: Colors.deepOrange),
+                              ),
+                            ),
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                textStyle: const TextStyle(fontSize: 20),
+                              ),
+                              onPressed: () {
+                                showModalBottomSheet<void>(
+                                  context: context,
+                                  isScrollControlled: true, // 모달의 기본 높이 제거
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                      height: 600,
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          children: <Widget>[
+                                            Container(
+                                                child: Column(
+                                                  children: [
+                                                    Container(
+                                                      padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                                                      alignment: Alignment.topRight,
+                                                      child: Column(
+                                                        children: [
+                                                          IconButton(
+                                                              icon: const Icon(Icons.close),
+                                                              onPressed: () {
+                                                                Navigator.of(context).pop();
+                                                              }
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      padding: EdgeInsets.fromLTRB(15, 8, 0, 10),
+                                                      alignment: Alignment.centerLeft,
+                                                      child: Text('출발지', style: TextStyle(color: Colors.black),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                        padding:
+                                                        EdgeInsets.fromLTRB(
+                                                            10, 0, 10, 0),
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              height: 30.0,
+                                                              child:  TextField(
+                                                                decoration: InputDecoration(
+                                                                  isDense: true,
+                                                                  contentPadding: EdgeInsets.all(10),
+                                                                  border: OutlineInputBorder(),
+                                                                  hintText: '주소 검색',
+                                                                  hintStyle: TextStyle(),
+                                                                  suffixIcon: IconButton(
+                                                                      icon: const Icon(Icons.search,),
+                                                                      onPressed: () {}
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                                padding:
+                                                                EdgeInsets.only(
+                                                                    bottom:
+                                                                    8.0)),
+                                                            Container(
+                                                              height: 30.0,
+                                                              child:  TextField(
+                                                                decoration: InputDecoration(
+                                                                  isDense: true,
+                                                                  contentPadding: EdgeInsets.all(10),
+                                                                  border: OutlineInputBorder(),
+                                                                  hintText: '상세 주소',
+                                                                  hintStyle: TextStyle(),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                                                            Container(
+                                                              height: 30.0,
+                                                              child:  TextField(
+                                                                decoration: InputDecoration(
+                                                                  isDense: true,
+                                                                  contentPadding: EdgeInsets.all(10),
+                                                                  border: OutlineInputBorder(),
+                                                                  hintText: '이름',
+                                                                  hintStyle: TextStyle(),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                                                            Container(
+                                                              height: 30.0,
+                                                              child:  TextField(
+                                                                decoration: InputDecoration(
+                                                                  isDense: true,
+                                                                  contentPadding: EdgeInsets.all(10),
+                                                                  border: OutlineInputBorder(),
+                                                                  hintText: '전화 번호',
+                                                                  hintStyle: TextStyle(),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                                                            Container(
+                                                              height: 30.0,
+                                                              child:  TextField(
+                                                                decoration: InputDecoration(
+                                                                  isDense: true,
+                                                                  contentPadding: EdgeInsets.all(10),
+                                                                  border: OutlineInputBorder(),
+                                                                  hintText: '픽업 기사님께 메시지 전달',
+                                                                  hintStyle: TextStyle(),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(padding: EdgeInsets.only(bottom: 8.0)),
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                              children: [
+                                                                ElevatedButton(
+                                                                    style:
+                                                                    ButtonStyle(
+                                                                      backgroundColor:
+                                                                      MaterialStateProperty.all(
+                                                                          Colors
+                                                                              .white30),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                    child: Text(
+                                                                      '주소록',
+                                                                      style: TextStyle(
+                                                                          color: Colors
+                                                                              .black),
+                                                                    )),
+                                                                Padding(
+                                                                    padding: EdgeInsets
+                                                                        .only(
+                                                                        right:
+                                                                        8.0)),
+                                                                ElevatedButton(
+                                                                    style:
+                                                                    ButtonStyle(
+                                                                      backgroundColor:
+                                                                      MaterialStateProperty.all(
+                                                                          Colors
+                                                                              .white30),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                    child: Text(
+                                                                      '집',
+                                                                      style: TextStyle(
+                                                                          color: Colors
+                                                                              .black),
+                                                                    )),
+                                                                Padding(
+                                                                    padding: EdgeInsets
+                                                                        .only(
+                                                                        right:
+                                                                        8.0)),
+                                                                ElevatedButton(
+                                                                    style:
+                                                                    ButtonStyle(
+                                                                      backgroundColor:
+                                                                      MaterialStateProperty.all(
+                                                                          Colors
+                                                                              .white30),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                    child: Text(
+                                                                      '회사',
+                                                                      style: TextStyle(
+                                                                          color: Colors
+                                                                              .black),
+                                                                    )),
+                                                              ],
+                                                            ),
+                                                            Padding(padding: EdgeInsets.only(top: 70.0)),
+                                                            Row(
+                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                              children: [
+                                                                Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 8)),
+                                                                Text(
+                                                                  '최근 배송에서 선택',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .black,letterSpacing: 2.0),
+                                                                ),
+                                                                Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 8)),
+                                                              ],
+                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  '최근 배송 건이 없습니다.',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .grey),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Padding(padding: EdgeInsets.only(bottom: 30.0)),
+                                                            Column(
+                                                              children: [
+                                                                ElevatedButton(
+                                                                  child: Text('출발지 설정', style: TextStyle(color: Colors.white),),
+                                                                  onPressed: () {},
+                                                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith((states) {
+                                                                    return states.contains(
+                                                                        MaterialState.pressed) ? Colors.green : Colors.grey;
+                                                                  }
+                                                                  ),
+                                                                    fixedSize: MaterialStateProperty.resolveWith((states) {
+                                                                      return states.contains(MaterialState.pressed) ? Size(300, 100) : Size(350, 50);
+                                                                    }
+                                                                    ),
+                                                                    // Set elevation regardless of states
+                                                                    elevation: MaterialStateProperty
+                                                                        .resolveWith(
+                                                                            (states) {
+                                                                          return 20.0;
+                                                                        }),
+                                                                  ),
+                                                                ),
+                                                                Padding(padding: EdgeInsets.only(bottom: 40.0)),
+                                                              ],
+                                                            )
+                                                          ],
+                                                        )),
+                                                  ],
+
+                                                )),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: const Text('출발지 설정', style: TextStyle(color: Colors.white),),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 335,
+                    height: 50,
+                    color: Color.fromARGB(255, 32, 43, 55),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                textStyle: const TextStyle(fontSize: 20),
+                              ),
+                              onPressed: () => showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  content: Column(
+                                    children: [
+                                      Text(
+                                        '도착지',
+                                        style:
+                                            TextStyle(color: Colors.deepOrange),
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: '주소검색',
+                                          suffixIcon: IconButton(
+                                              icon: const Icon(Icons.search),
+                                              onPressed: () {}),
+                                        ),
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: '상세주소',
+                                        ),
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: '이름',
+                                        ),
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: '전화번호',
+                                        ),
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: '픽업 기사님께 메세지 전달(선택)',
+                                        ),
+                                      ),
+                                      Padding(padding: EdgeInsets.all(10.0)),
+                                      Row(
+                                        children: [
+                                          ElevatedButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                '주소록',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                          ElevatedButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                '집',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                          ElevatedButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                '회사',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                        ],
+                                      ),
+                                      Padding(padding: EdgeInsets.all(10.0)),
+                                      Text(
+                                        '최근 배송에서 선택',
+                                        style: TextStyle(color: Colors.black),
+                                      ),
+                                      Text(
+                                        '최근 배송 건이 없습니다.',
+                                        style: TextStyle(color: Colors.grey),
+                                      ),
+                                    ],
+                                  ),
+                                  actions: <Widget>[
+                                    Center(
+                                      child: ElevatedButton(
+                                        onPressed: () =>
+                                            Navigator.pop(context, 'OK'),
+                                        child: const Text('도착지 설정'),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              child: const Text(
+                                '도착',
+                                style: TextStyle(color: Colors.deepOrange),
+                              ),
+                            ),
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                textStyle: const TextStyle(fontSize: 20),
+                              ),
+                              onPressed: () => showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  content: Column(
+                                    children: [
+                                      Text(
+                                        '출발지',
+                                        style:
+                                            TextStyle(color: Colors.deepOrange),
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: '주소검색',
+                                          suffixIcon: IconButton(
+                                              icon: const Icon(Icons.search),
+                                              onPressed: () {}),
+                                        ),
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: '상세주소',
+                                        ),
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: '이름',
+                                        ),
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: '전화번호',
+                                        ),
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: '픽업 기사님께 메세지 전달(선택)',
+                                        ),
+                                      ),
+                                      Padding(padding: EdgeInsets.all(10.0)),
+                                      Row(
+                                        children: [
+                                          ElevatedButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                '주소록',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                          ElevatedButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                '집',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                          ElevatedButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                '회사',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                        ],
+                                      ),
+                                      Padding(padding: EdgeInsets.all(10.0)),
+                                      Text(
+                                        '최근 배송에서 선택',
+                                        style: TextStyle(color: Colors.black),
+                                      ),
+                                      Text(
+                                        '최근 배송 건이 없습니다.',
+                                        style: TextStyle(color: Colors.grey),
+                                      ),
+                                    ],
+                                  ),
+                                  actions: <Widget>[
+                                    Center(
+                                      child: ElevatedButton(
+                                        onPressed: () =>
+                                            Navigator.pop(context, 'OK'),
+                                        child: const Text('출발지 설정'),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              child: const Text(
+                                '도착지 설정',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-              Container(
-                width: 335,
-                height: 42,
-                color: Color.fromARGB(255, 32, 43, 55),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '출발',
-                          style: TextStyle(color: Colors.deepOrange),
-                        ),
-                        Text('dataasdf'),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: 335,
-                height: 42,
-                color: Color.fromARGB(255, 32, 43, 55),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            print('onTap');
-                          },
-                          child: Text(
-                            '도착',
-                            style: TextStyle(color: Colors.deepOrange),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            showModalBottomSheet(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return Text('gkgkgkgkgk');
-                                });
-                          },
-                          child: Text('dataasdf'),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+          Container(
+            width: 400,
+            height: 300,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        IconButton(
+                            icon: const Icon(Icons.local_shipping),
+                            onPressed: () {}),
+                        IconButton(
+                            icon: const Icon(Icons.local_shipping),
+                            onPressed: () {}),
+                        IconButton(
+                            icon: const Icon(Icons.local_shipping),
+                            onPressed: () {}),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        IconButton(
+                            icon: const Icon(Icons.local_shipping),
+                            onPressed: () {}),
+                        IconButton(
+                            icon: const Icon(Icons.local_shipping),
+                            onPressed: () {}),
+                        IconButton(
+                            icon: const Icon(Icons.local_shipping),
+                            onPressed: () {}),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        IconButton(
+                            icon: const Icon(Icons.local_shipping),
+                            onPressed: () {}),
+                        IconButton(
+                            icon: const Icon(Icons.local_shipping),
+                            onPressed: () {}),
+                        IconButton(
+                            icon: const Icon(Icons.local_shipping),
+                            onPressed: () {}),
+                      ],
+                    ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
